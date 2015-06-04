@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="ComebackModel.ComebackSubReason" Width="1.5" PointX="3" PointY="4.625" />
         <EntityTypeShape EntityType="ComebackModel.Setting" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="ComebackModel.User" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ComebackModel.v_SubReasons" Width="1.5" PointX="5.75" PointY="6.75" />
         <AssociationConnector Association="ComebackModel.FK_Comebacks_0" />
         <AssociationConnector Association="ComebackModel.FK_ComebackSubReasons_0" />
       </Diagram>

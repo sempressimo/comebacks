@@ -50,6 +50,21 @@
           <Property Name="UserPassword" Type="varchar" MaxLength="15" />
           <Property Name="Role" Type="char" MaxLength="1" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_SubReasons">
+          <Key>
+            <PropertyRef Name="Comeback_SubReason_ID" />
+            <PropertyRef Name="SubReasonDescription" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="ReasonDescription" />
+          </Key>
+          <Property Name="Comeback_SubReason_ID" Type="int" Nullable="false" />
+          <Property Name="SubReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ComebackReason_ID" Type="int" />
+          <Property Name="ReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Comebacks_0">
           <End Role="ComebackReasons" Type="Self.ComebackReasons" Multiplicity="0..1" />
           <End Role="Comebacks" Type="Self.Comebacks" Multiplicity="*" />
@@ -80,6 +95,15 @@
           <EntitySet Name="ComebackSubReasons" EntityType="Self.ComebackSubReasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_SubReasons" EntityType="Self.v_SubReasons" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_SubReasons].[Comeback_SubReason_ID] AS [Comeback_SubReason_ID], 
+    [v_SubReasons].[SubReasonDescription] AS [SubReasonDescription], 
+    [v_SubReasons].[IsActive] AS [IsActive], 
+    [v_SubReasons].[ComebackReason_ID] AS [ComebackReason_ID], 
+    [v_SubReasons].[ReasonDescription] AS [ReasonDescription]
+    FROM [dbo].[v_SubReasons] AS [v_SubReasons]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Comebacks_0" Association="Self.FK_Comebacks_0">
             <End Role="ComebackReasons" EntitySet="ComebackReasons" />
             <End Role="Comebacks" EntitySet="Comebacks" />
@@ -99,6 +123,7 @@
           <EntitySet Name="ComebackSubReasons" EntityType="ComebackModel.ComebackSubReason" />
           <EntitySet Name="Settings" EntityType="ComebackModel.Setting" />
           <EntitySet Name="Users" EntityType="ComebackModel.User" />
+          <EntitySet Name="v_SubReasons" EntityType="ComebackModel.v_SubReasons" />
           <AssociationSet Name="FK_Comebacks_0" Association="ComebackModel.FK_Comebacks_0">
             <End Role="ComebackReason" EntitySet="ComebackReasons" />
             <End Role="Comeback" EntitySet="Comebacks" />
@@ -157,6 +182,19 @@
           <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
+        <EntityType Name="v_SubReasons">
+          <Key>
+            <PropertyRef Name="Comeback_SubReason_ID" />
+            <PropertyRef Name="SubReasonDescription" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="ReasonDescription" />
+          </Key>
+          <Property Name="Comeback_SubReason_ID" Type="Int32" Nullable="false" />
+          <Property Name="SubReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ComebackReason_ID" Type="Int32" />
+          <Property Name="ReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="FK_Comebacks_0">
           <End Type="ComebackModel.ComebackReason" Role="ComebackReason" Multiplicity="0..1" />
           <End Type="ComebackModel.Comeback" Role="Comeback" Multiplicity="*" />
@@ -181,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -234,6 +272,17 @@
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_SubReasons">
+            <EntityTypeMapping TypeName="ComebackModel.v_SubReasons">
+              <MappingFragment StoreEntitySet="v_SubReasons">
+                <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+                <ScalarProperty Name="ComebackReason_ID" ColumnName="ComebackReason_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubReasonDescription" ColumnName="SubReasonDescription" />
+                <ScalarProperty Name="Comeback_SubReason_ID" ColumnName="Comeback_SubReason_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
