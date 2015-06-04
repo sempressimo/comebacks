@@ -1,0 +1,9 @@
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\bin\Debug\Comeback Importer.exe.config
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\bin\Debug\Comeback Importer.exe
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\bin\Debug\Comeback Importer.pdb
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback_Importer.Form1.resources
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback_Importer.Properties.Resources.resources
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback Importer.csproj.GenerateResource.Cache
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback Importer.exe
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback Importer.pdb
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\ComebacksSite\Comeback Importer\obj\Debug\Comeback Importer.csprojResolveAssemblyReference.cache

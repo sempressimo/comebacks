@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ComebacksSite.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Comebacks Web Application</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="StyleSection" runat="server" />
+    <script src="Scripts/jquery-2.1.4.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <style>
+        .bk {
+            background: url(../images/bg.jpg);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-color: #333;
+            min-height: 100%;
+            -webkit-font-smoothing: antialiased;
+            font-family: helvetica;
+        }
+    </style>
+</head>
+<body class="bk">
+ 
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="default.aspx"><span class="glyphicon glyphicon-road">&nbsp;Comebacks</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="dashboard.aspx">Dashboard</a></li>
+            <li><a href="default.aspx">Comebacks</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Options <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="reasons_list.aspx">Comeback Reasons</a></li>
+                <li><a href="sub_reasons_list.aspx">Comeback Sub-Reasons</a></li>
+                <li class="divider"></li>
+                <li><a href="login_list.aspx">User Accounts</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signout.aspx"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Sign Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentSection" runat="server" />
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="ScriptSection" runat="server" />
+</body>
+</html>

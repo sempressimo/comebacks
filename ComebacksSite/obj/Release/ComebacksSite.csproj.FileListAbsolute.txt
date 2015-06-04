@@ -1,0 +1,9 @@
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\ComebacksSite.dll.config
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\ComebacksSite.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\ComebacksSite.pdb
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\EntityFramework.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\EntityFramework.SqlServer.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\EntityFramework.xml
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\bin\EntityFramework.SqlServer.xml
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\obj\Release\ComebacksSite.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\ComebacksSite\obj\Release\ComebacksSite.pdb

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComebackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ComebackEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ComebackReasons" EntityType="ComebackModel.ComebackReason" />
+    <EntitySet Name="Comebacks" EntityType="ComebackModel.Comeback" />
+    <EntitySet Name="ComebackSubReasons" EntityType="ComebackModel.ComebackSubReason" />
+    <EntitySet Name="Settings" EntityType="ComebackModel.Setting" />
+    <EntitySet Name="Users" EntityType="ComebackModel.User" />
+    <AssociationSet Name="FK_Comebacks_0" Association="ComebackModel.FK_Comebacks_0">
+      <End Role="ComebackReason" EntitySet="ComebackReasons" />
+      <End Role="Comeback" EntitySet="Comebacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComebackSubReasons_0" Association="ComebackModel.FK_ComebackSubReasons_0">
+      <End Role="ComebackReason" EntitySet="ComebackReasons" />
+      <End Role="ComebackSubReason" EntitySet="ComebackSubReasons" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ComebackReason">
+    <Key>
+      <PropertyRef Name="ComebackReason_ID" />
+    </Key>
+    <Property Name="ComebackReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Comebacks" Relationship="ComebackModel.FK_Comebacks_0" FromRole="ComebackReason" ToRole="Comeback" />
+    <NavigationProperty Name="ComebackSubReasons" Relationship="ComebackModel.FK_ComebackSubReasons_0" FromRole="ComebackReason" ToRole="ComebackSubReason" />
+  </EntityType>
+  <EntityType Name="Comeback">
+    <Key>
+      <PropertyRef Name="Comeback_ID" />
+    </Key>
+    <Property Name="Comeback_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Is_Comeback" Type="Boolean" Nullable="false" />
+    <Property Name="RO_Number" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="VIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ComebackDate" Type="DateTime" Precision="3" />
+    <Property Name="ComebackReason_ID" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IsOpen" Type="Int32" />
+    <NavigationProperty Name="ComebackReason" Relationship="ComebackModel.FK_Comebacks_0" FromRole="Comeback" ToRole="ComebackReason" />
+  </EntityType>
+  <EntityType Name="ComebackSubReason">
+    <Key>
+      <PropertyRef Name="Comeback_SubReason_ID" />
+    </Key>
+    <Property Name="Comeback_SubReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="ComebackReason_ID" Type="Int32" />
+    <NavigationProperty Name="ComebackReason" Relationship="ComebackModel.FK_ComebackSubReasons_0" FromRole="ComebackSubReason" ToRole="ComebackReason" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="Setting_ID" />
+    </Key>
+    <Property Name="Setting_ID" Type="Int32" Nullable="false" />
+    <Property Name="FilesPath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Comebacks_0">
+    <End Type="ComebackModel.ComebackReason" Role="ComebackReason" Multiplicity="0..1" />
+    <End Type="ComebackModel.Comeback" Role="Comeback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComebackReason">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Principal>
+      <Dependent Role="Comeback">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComebackSubReasons_0">
+    <End Type="ComebackModel.ComebackReason" Role="ComebackReason" Multiplicity="0..1" />
+    <End Type="ComebackModel.ComebackSubReason" Role="ComebackSubReason" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComebackReason">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Principal>
+      <Dependent Role="ComebackSubReason">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

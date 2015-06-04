@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ComebackModelStoreContainer" CdmEntityContainer="ComebackEntities">
+    <EntitySetMapping Name="ComebackReasons">
+      <EntityTypeMapping TypeName="ComebackModel.ComebackReason">
+        <MappingFragment StoreEntitySet="ComebackReasons">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+          <ScalarProperty Name="ComebackReason_ID" ColumnName="ComebackReason_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comebacks">
+      <EntityTypeMapping TypeName="ComebackModel.Comeback">
+        <MappingFragment StoreEntitySet="Comebacks">
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ComebackReason_ID" ColumnName="ComebackReason_ID" />
+          <ScalarProperty Name="ComebackDate" ColumnName="ComebackDate" />
+          <ScalarProperty Name="VIN" ColumnName="VIN" />
+          <ScalarProperty Name="RO_Number" ColumnName="RO_Number" />
+          <ScalarProperty Name="Is_Comeback" ColumnName="Is_Comeback" />
+          <ScalarProperty Name="Comeback_ID" ColumnName="Comeback_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComebackSubReasons">
+      <EntityTypeMapping TypeName="ComebackModel.ComebackSubReason">
+        <MappingFragment StoreEntitySet="ComebackSubReasons">
+          <ScalarProperty Name="ComebackReason_ID" ColumnName="ComebackReason_ID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SubReasonDescription" ColumnName="SubReasonDescription" />
+          <ScalarProperty Name="Comeback_SubReason_ID" ColumnName="Comeback_SubReason_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

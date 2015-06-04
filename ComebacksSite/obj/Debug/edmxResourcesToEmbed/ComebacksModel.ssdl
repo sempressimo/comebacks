@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ComebackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ComebackReasons">
+    <Key>
+      <PropertyRef Name="ComebackReason_ID" />
+    </Key>
+    <Property Name="ComebackReason_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comebacks">
+    <Key>
+      <PropertyRef Name="Comeback_ID" />
+    </Key>
+    <Property Name="Comeback_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Is_Comeback" Type="bit" Nullable="false" />
+    <Property Name="RO_Number" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="VIN" Type="varchar" MaxLength="15" />
+    <Property Name="ComebackDate" Type="datetime" />
+    <Property Name="ComebackReason_ID" Type="int" />
+    <Property Name="Notes" Type="varchar" MaxLength="255" />
+    <Property Name="IsOpen" Type="int" />
+  </EntityType>
+  <EntityType Name="ComebackSubReasons">
+    <Key>
+      <PropertyRef Name="Comeback_SubReason_ID" />
+    </Key>
+    <Property Name="Comeback_SubReason_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ComebackReason_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="Setting_ID" />
+    </Key>
+    <Property Name="Setting_ID" Type="int" Nullable="false" />
+    <Property Name="FilesPath" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="15" />
+    <Property Name="Role" Type="char" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK_Comebacks_0">
+    <End Role="ComebackReasons" Type="Self.ComebackReasons" Multiplicity="0..1" />
+    <End Role="Comebacks" Type="Self.Comebacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComebackReasons">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Principal>
+      <Dependent Role="Comebacks">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComebackSubReasons_0">
+    <End Role="ComebackReasons" Type="Self.ComebackReasons" Multiplicity="0..1" />
+    <End Role="ComebackSubReasons" Type="Self.ComebackSubReasons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ComebackReasons">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Principal>
+      <Dependent Role="ComebackSubReasons">
+        <PropertyRef Name="ComebackReason_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ComebackModelStoreContainer">
+    <EntitySet Name="ComebackReasons" EntityType="Self.ComebackReasons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comebacks" EntityType="Self.Comebacks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComebackSubReasons" EntityType="Self.ComebackSubReasons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comebacks_0" Association="Self.FK_Comebacks_0">
+      <End Role="ComebackReasons" EntitySet="ComebackReasons" />
+      <End Role="Comebacks" EntitySet="Comebacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComebackSubReasons_0" Association="Self.FK_ComebackSubReasons_0">
+      <End Role="ComebackReasons" EntitySet="ComebackReasons" />
+      <End Role="ComebackSubReasons" EntitySet="ComebackSubReasons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

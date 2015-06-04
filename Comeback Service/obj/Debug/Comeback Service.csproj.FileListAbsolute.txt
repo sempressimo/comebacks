@@ -1,0 +1,10 @@
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\Comeback Service.dll.config
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\Comeback Service.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\Comeback Service.pdb
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\EntityFramework.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\EntityFramework.xml
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\obj\Debug\Comeback Service.dll
+C:\Users\sempressimo\documents\visual studio 2013\Projects\ComebacksSite\Comeback Service\obj\Debug\Comeback Service.pdb
+C:\Users\sempressimo\Documents\Visual Studio 2013\Projects\ComebacksSite\Comeback Service\obj\Debug\Comeback Service.csprojResolveAssemblyReference.cache
