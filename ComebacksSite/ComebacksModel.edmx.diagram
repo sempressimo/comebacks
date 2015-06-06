@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="01b22482c09f41a48077ed023c185186" Name="Diagram1">
-        <EntityTypeShape EntityType="ComebackModel.ComebackReason" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="ComebackModel.ComebackReason" Width="1.5" PointX="0.75" PointY="3.375" />
         <EntityTypeShape EntityType="ComebackModel.Comeback" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="ComebackModel.ComebackSubReason" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="ComebackModel.ComebackSubReason" Width="1.5" PointX="3" PointY="5.625" />
         <EntityTypeShape EntityType="ComebackModel.Setting" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="ComebackModel.User" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="ComebackModel.v_SubReasons" Width="1.5" PointX="5.75" PointY="6.75" />
