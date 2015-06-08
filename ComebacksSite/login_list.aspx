@@ -35,10 +35,16 @@
                     <asp:LinkButton ID="lbNewRecord" OnClick="lbNewRecord_Click" CausesValidation="false" runat="server" CssClass="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;New Record</asp:LinkButton>
 
                     <div class="table-responsive">
-                        <asp:GridView ID="gvRecords" Width="100%" runat="server" DataKeyNames="Username" CssClass="table table-striped table-bordered table-condensed" EmptyDataText="There are no comebacks." OnRowCommand="gvRecords_RowCommand" OnRowDeleting="gvRecords_RowDeleting">
+                        <asp:GridView ID="gvRecords" Width="100%" runat="server" DataKeyNames="Username" CssClass="table table-striped table-bordered table-condensed" EmptyDataText="There are no comebacks." OnRowCommand="gvRecords_RowCommand" OnRowDeleting="gvRecords_RowDeleting" AutoGenerateColumns="False">
                         <Columns>
-                        <asp:ButtonField CommandName="Open" Text="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i> Open" ControlStyle-CssClass="btn btn-info" />
-                        <asp:ButtonField CommandName="Delete" Text="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i> Delete" ControlStyle-CssClass="btn btn-danger" />
+                        <asp:ButtonField CommandName="Open" Text="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i> Open" ControlStyle-CssClass="btn btn-info" >
+<ControlStyle CssClass="btn btn-info"></ControlStyle>
+                            </asp:ButtonField>
+                        <asp:ButtonField CommandName="Delete" Text="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i> Delete" ControlStyle-CssClass="btn btn-danger" >
+<ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                            </asp:ButtonField>
+                            <asp:BoundField DataField="Username" HeaderText="Username" />
+                            <asp:BoundField DataField="Role" HeaderText="Role" />
                         </Columns>
                         </asp:GridView>
                     </div>
