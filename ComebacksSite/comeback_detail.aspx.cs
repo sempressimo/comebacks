@@ -35,8 +35,25 @@ namespace ComebacksSite
         }
 
         protected void LoadRecord()
-        { 
-        
+        {
+            int id = Convert.ToInt32(ViewState["id"]);
+
+            Comeback C = this.db.Comebacks.Single(p => p.Comeback_ID == id);
+
+            this.txtClosedDate.Value = C.CloseDate.Value.ToShortDateString();
+            this.txtCustomerName.Value = C.CustomerName;
+            this.txtMainPhone.Value = C.HomePhone;
+            this.txtModel.Value = C.Model;
+            this.txtNotes.Value = C.Notes;
+            this.txtOpenDate.Value = C.OpenDate.Value.ToShortDateString();
+            this.txtRONumber.Value = C.RO_Number;
+            this.txtSerial.Value = C.VIN;
+            this.txtWorkPhone.Value = C.WorkPhone;
+
+            if (this.cmbStatus.Items.FindByValue(C.ComebackStatus.ToString()) != null)
+            {
+                this.cmbStatus.Items.FindByValue(C.ComebackStatus.ToString()).Selected = true;
+            }
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

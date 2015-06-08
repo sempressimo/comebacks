@@ -58,13 +58,13 @@ namespace ComebacksSite {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSerial;
         
         /// <summary>
-        /// Text2 control.
+        /// txtModel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtModel;
         
         /// <summary>
         /// txtOpenDate control.

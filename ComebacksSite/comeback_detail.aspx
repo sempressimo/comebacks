@@ -35,19 +35,19 @@
                                         <input id="txtRONumber" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Serial</label>
+                                        <label>Serial</label>
                                         <input id="txtSerial" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Serial</label>
-                                        <input id="Text2" runat="server" type="text" disabled="disabled" class="form-control">
+                                        <label>Car Model</label>
+                                        <input id="txtModel" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Open Date</label>
+                                        <label>Open Date</label>
                                         <input id="txtOpenDate" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Closed Date</label>
+                                        <label>Closed Date</labe>
                                         <input id="txtClosedDate" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Set Status</label>
+                                        <label  >Set Status</label>
                                         <asp:DropDownList runat="server" CssClass="form-control" ID="cmbStatus" >
                                             <asp:ListItem Value="1">Is Comeback</asp:ListItem>
                                             <asp:ListItem Value="2">Not Comeback</asp:ListItem>
@@ -68,7 +68,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <label for="exampleInputPassword1">Parts Specialist Notes</label>
+                                        <label  >Parts Specialist Notes</label>
                                         <textarea rows="3" placeholder="Comeback explanation..." class="form-control" required="required"></textarea>
                                         </div>
 
