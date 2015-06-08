@@ -21,12 +21,12 @@ namespace ComebacksSite
         public Nullable<System.DateTime> OpenDate { get; set; }
         public Nullable<int> ComebackReason_ID { get; set; }
         public string Notes { get; set; }
-        public Nullable<int> IsOpen { get; set; }
         public string CustomerName { get; set; }
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }
         public string Model { get; set; }
         public Nullable<System.DateTime> CloseDate { get; set; }
+        public Nullable<int> ComebackStatus { get; set; }
     
         public virtual ComebackReason ComebackReason { get; set; }
     }
