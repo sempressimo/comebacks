@@ -3,27 +3,119 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
 
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+<div style="background-color: white !important" class="jumbotron">
+
+    <h2>Comeback Reason List</h2>
+
+    <br/>
+
+    <form id="form_default" runat="server">
+
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
+
+        <div class="container-fluid">
+
+            <div class="row">
+        
+                <div class="col-lg-8">
+                    
+                        <div class="list-group">
+
+                            <a href="#" class="list-group-item active">
+                            RO Information
+                            </a>
+                            <br/>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                        <div class="form-group">
+                                        <label for="exampleInputEmail1">RO Number</label>
+                                        <input id="txtRONumber" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Serial</label>
+                                        <input id="txtSerial" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Serial</label>
+                                        <input id="Text2" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Open Date</label>
+                                        <input id="txtOpenDate" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Closed Date</label>
+                                        <input id="txtClosedDate" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                                                            
+                                        <div class="form-group">
+                                        <label>Technitian Notes</label>
+                                        <textarea id="txtNotes" runat="server" rows="3" placeholder="Comeback explanation..." class="form-control" required="required"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Set Status</label>
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="cmbStatus" >
+                                            <asp:ListItem Value="1">Is Comeback</asp:ListItem>
+                                            <asp:ListItem Value="2">Not Comeback</asp:ListItem>
+                                            <asp:ListItem Value="3">Needs Parts Specialist Input</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+
+                                        <div class="form-group">
+                                        <label for="exampleInputPassword1">Parts Specialist Notes</label>
+                                        <textarea rows="3" placeholder="Comeback explanation..." class="form-control" required="required"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <asp:LinkButton ID="lbSave" runat="server" CssClass="btn btn-success" OnClick="lbSave_Click">Save</asp:LinkButton>
+                                            <asp:LinkButton ID="lbCancel" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click">Cancel</asp:LinkButton>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <div class="col-lg-4">
+                        
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">
+                            Customer Details
+                            </a>
+                            
+                            <br/>
+                            <div class="form-group">
+                            <label>Customer Name</label>
+                            <input id="txtCustomerName" runat="server" type="text" class="form-control" disabled="disabled">
+                            </div>
+                            <div class="form-group">
+                            <label>Main Phone</label>
+                            <input id="txtMainPhone" runat="server" type="text" class="form-control" disabled="disabled">
+                            </div>
+                            <div class="form-group">
+                            <label>Work Phone</label>
+                            <input id="txtWorkPhone" runat="server" type="text" class="form-control"  disabled="disabled">
+                            </div>
+                            </div>
+                        </div>
+            
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div> <!-- jumbotron -->
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptSection" runat="server">
