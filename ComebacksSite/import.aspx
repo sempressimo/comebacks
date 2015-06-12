@@ -1,36 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="login_detail.aspx.cs" Inherits="ComebacksSite.login_detail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="import.aspx.cs" Inherits="ComebacksSite.import" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="StyleSection" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
-    
     <div style="background-color: white !important" class="jumbotron">
 
-    <h2>Login Account Detail</h2>
-
+    <h2>Import Comebacks</h2>
+                                        
     <form role="form" runat="server">
         
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input id="txtUsername" runat="server" type="text" class="form-control" placeholder="Login name...">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Role</label>
-            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbRole" >
-                <asp:ListItem Value="A">Admin</asp:ListItem>
-                <asp:ListItem Value="P">Parts</asp:ListItem>
-                <asp:ListItem Value="U">User</asp:ListItem>
-            </asp:DropDownList>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Password</label>
-            <input id="txtPassword" runat="server" type="password" class="form-control" placeholder="Secure password...">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Confirm Password</label>
-            <input id="txtPassword2" runat="server" type="password" class="form-control" placeholder="Re-type password...">
+            <label>Choose File:</label>
+            <input id="txtDescription" runat="server" type="text" class="form-control" placeholder="Enter description...">
         </div>
         <div class="form-group">
             <div class="checkbox">
