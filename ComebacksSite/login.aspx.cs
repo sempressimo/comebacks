@@ -18,8 +18,8 @@ namespace ComebacksSite
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
             //DEBUG:
-            FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
-            Response.Redirect("sub_reasons_list.aspx");
+            //FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+            //Response.Redirect("sub_reasons_list.aspx");
 
             ComebackEntities db = new ComebackEntities();
 
@@ -32,7 +32,7 @@ namespace ComebacksSite
 
                 FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
 
-                Response.Redirect("default.aspx");
+                Response.Redirect("default.aspx?mode=pending");
             }
             else
             {
