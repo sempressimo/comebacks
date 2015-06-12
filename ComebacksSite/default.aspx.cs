@@ -15,9 +15,59 @@ namespace ComebacksSite
         {
             try
             {
-                if (!Page.IsPostBack)
+                this.LoadRecords(Request.QueryString["mode"]);
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected int PossibleComebacks(bool OnlyTodays)
+        {
+            return 1;
+        }
+
+        protected void LoadRecords(string Filter)
+        {
+            IQueryable<Comeback> R = null;
+
+            if (Filter == "pending")
+            {
+                R = this.db.Comebacks.Where(p => p.ComebackStatus == null).OrderBy(p => p.OpenDate);
+            }
+            else if (Filter == "new")
+            {
+                R = this.db.Comebacks.Where(p => p.ComebackStatus == null && p.OpenDate == DateTime.Today).OrderBy(p => p.OpenDate);
+            }
+            else if (Filter == "parts")
+            {
+                R = this.db.Comebacks.Where(p => p.ComebackStatus == 3).OrderBy(p => p.OpenDate);
+            }
+            else
+            {
+                throw new Exception("No filter specified.");
+            }
+
+            this.gvRecords.DataSource = R.ToList();
+            this.gvRecords.DataBind();
+
+            this.lblPending.Text = R.Count().ToString();
+
+            var Todays = R.Where(p => p.OpenDate == DateTime.Today);
+            this.lblNew.Text = Todays.Count().ToString();
+        }
+
+        protected void gvRecords_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int row_id = Convert.ToInt32(e.CommandArgument);
+
+                if (e.CommandName == "Open")
                 {
-                    this.LoadRecords();
+                    Response.Redirect("comeback_detail.aspx?id=" + this.gvRecords.DataKeys[row_id].Value.ToString());
                 }
             }
             catch (Exception E)
@@ -27,21 +77,14 @@ namespace ComebacksSite
             }
         }
 
-        protected void LoadRecords()
-        {
-            var R = this.db.Comebacks.OrderBy(p => p.ComebackDate);
-
-            this.gvRecords.DataSource = R.ToList();
-            this.gvRecords.DataBind();
-
-            this.gvRecords.Caption = "Comebacks found: " + R.Count().ToString();
-        }
-
-        protected void gvRecords_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvRecords_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             try
             {
-                Response.Redirect("comeback_detail.aspx");
+
+                this.gvRecords.PageIndex = e.NewPageIndex;
+
+                //this.LoadRecords();
             }
             catch (Exception E)
             {
