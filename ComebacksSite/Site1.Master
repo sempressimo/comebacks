@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Comebacks Web Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="StyleSection" runat="server" />
 
