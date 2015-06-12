@@ -12,7 +12,6 @@
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
             <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
 
-            <highchart:LineChart id="hcVendas" runat="server" Width="500" Height="350" />
 
         </form>
 
