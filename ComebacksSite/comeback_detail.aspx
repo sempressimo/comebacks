@@ -117,6 +117,8 @@
 
 </div> <!-- jumbotron -->
 
+    </label>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptSection" runat="server">
 </asp:Content>

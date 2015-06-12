@@ -40,7 +40,7 @@ namespace ComebacksSite
 
             Comeback C = this.db.Comebacks.Single(p => p.Comeback_ID == id);
 
-            this.txtClosedDate.Value = C.CloseDate.Value.ToShortDateString();
+            if (C.CloseDate != null) this.txtClosedDate.Value = C.CloseDate.Value.ToShortDateString();
             this.txtCustomerName.Value = C.CustomerName;
             this.txtMainPhone.Value = C.HomePhone;
             this.txtModel.Value = C.Model;
