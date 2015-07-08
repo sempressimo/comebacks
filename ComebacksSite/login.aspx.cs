@@ -17,27 +17,35 @@ namespace ComebacksSite
 
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
-            //DEBUG:
-            //FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
-            //Response.Redirect("sub_reasons_list.aspx");
-
-            ComebackEntities db = new ComebackEntities();
-
-            var U = db.Users.SingleOrDefault(p => p.Username == this.txtUsername.Text && p.UserPassword == this.txtPassword.Value);
-
-            if (U != null)
+            try
             {
-                Session["Username"] = U.Username;
-                Session["Role"] = U.Role;
+                //DEBUG:
+                //FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                //Response.Redirect("sub_reasons_list.aspx");
 
-                FormsAuthentication.SetAuthCookie(this.txtUsername.Text, false);
+                ComebackEntities db = new ComebackEntities();
 
-                Response.Redirect("default.aspx?mode=pending");
+                var U = db.Users.SingleOrDefault(p => p.Username == this.txtUsername.Value && p.UserPassword == this.txtPassword.Value);
+
+                if (U != null)
+                {
+                    Session["Username"] = U.Username;
+                    Session["Role"] = U.Role;
+
+                    FormsAuthentication.SetAuthCookie(this.txtUsername.Value, false);
+
+                    Response.Redirect("default.aspx?mode=pending");
+                }
+                else
+                {
+                    this.CustomValidator1.IsValid = false;
+                    this.CustomValidator1.ErrorMessage = "Incorrect username or password.";
+                }
             }
-            else
+            catch (Exception E)
             {
                 this.CustomValidator1.IsValid = false;
-                this.CustomValidator1.ErrorMessage = "Incorrect username or password.";
+                this.CustomValidator1.ErrorMessage = E.Message;
             }
         }
     }

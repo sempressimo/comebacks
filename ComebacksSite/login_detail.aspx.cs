@@ -45,12 +45,23 @@ namespace ComebacksSite
         {
             try
             {
+                if (this.txtPassword.Value != this.txtPassword2.Value)
+                {
+                    throw new Exception("Passwords do not match.");
+                }
+
+                if (this.txtPassword.Value.Trim() == "")
+                {
+                    throw new Exception("Password can not be blank.");
+                }
+
                 if (ViewState["id"] == null)
                 {
                     User U = new User();
 
                     U.Username = this.txtUsername.Value;
                     U.UserPassword = this.txtPassword.Value;
+                    U.Role = this.cmbRole.SelectedValue;
 
                     this.db.Users.Add(U);
                     this.db.SaveChanges();
@@ -63,7 +74,8 @@ namespace ComebacksSite
 
                     R.Username = this.txtUsername.Value;
                     R.UserPassword = this.txtPassword.Value;
-
+                    R.Role = this.cmbRole.SelectedValue;
+                    
                     this.db.SaveChanges();
                 }
 

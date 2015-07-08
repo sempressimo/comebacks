@@ -10,7 +10,7 @@
 namespace ComebacksSite {
     
     
-    public partial class login_detail {
+    public partial class sub_reason_detail {
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -31,40 +31,22 @@ namespace ComebacksSite {
         protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
         
         /// <summary>
-        /// txtUsername control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsername;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtDescription;
         
         /// <summary>
-        /// cmbRole control.
+        /// cmbReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbRole;
-        
-        /// <summary>
-        /// txtPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPassword;
-        
-        /// <summary>
-        /// txtPassword2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPassword2;
+        protected global::System.Web.UI.WebControls.DropDownList cmbReason;
         
         /// <summary>
         /// cbIsActive control.
