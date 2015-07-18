@@ -51,6 +51,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="reasons_list.aspx">Comeback Reasons</a></li>
                 <li><a href="sub_reasons_list.aspx">Comeback Sub-Reasons</a></li>
+                  <li><a href="responsibilty_categories_list.aspx">Responsibilty Categories</a></li>
                 <li class="divider"></li>
                 <li><a href="login_list.aspx">User Accounts</a></li>
               </ul>
