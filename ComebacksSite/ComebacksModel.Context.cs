@@ -28,7 +28,9 @@ namespace ComebacksSite
         public virtual DbSet<ComebackReason> ComebackReasons { get; set; }
         public virtual DbSet<Comeback> Comebacks { get; set; }
         public virtual DbSet<ComebackSubReason> ComebackSubReasons { get; set; }
+        public virtual DbSet<ProblemResponsibleCategory> ProblemResponsibleCategories { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<v_SubReasons> v_SubReasons { get; set; }
     }

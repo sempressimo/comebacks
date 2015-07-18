@@ -22,8 +22,10 @@ namespace ComebacksSite
     
         public int ComebackReason_ID { get; set; }
         public string ReasonDescription { get; set; }
+        public Nullable<int> ProblemResponsibilityCategory_ID { get; set; }
         public bool IsActive { get; set; }
     
+        public virtual ProblemResponsibleCategory ProblemResponsibleCategory { get; set; }
         public virtual ICollection<Comeback> Comebacks { get; set; }
         public virtual ICollection<ComebackSubReason> ComebackSubReasons { get; set; }
     }

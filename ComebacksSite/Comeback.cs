@@ -25,7 +25,9 @@ namespace ComebacksSite
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }
         public string Model { get; set; }
+        public string CarYear { get; set; }
         public Nullable<System.DateTime> CloseDate { get; set; }
+        public string Complaint { get; set; }
         public Nullable<int> ComebackStatus { get; set; }
     
         public virtual ComebackReason ComebackReason { get; set; }

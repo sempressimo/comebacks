@@ -11,6 +11,7 @@
           </Key>
           <Property Name="ComebackReason_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProblemResponsibilityCategory_ID" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Comebacks">
@@ -28,7 +29,9 @@
           <Property Name="HomePhone" Type="varchar" MaxLength="15" />
           <Property Name="WorkPhone" Type="varchar" MaxLength="15" />
           <Property Name="Model" Type="varchar" MaxLength="25" />
+          <Property Name="CarYear" Type="varchar" MaxLength="4" />
           <Property Name="CloseDate" Type="datetime" />
+          <Property Name="Complaint" Type="varchar" MaxLength="150" />
           <Property Name="ComebackStatus" Type="int" />
         </EntityType>
         <EntityType Name="ComebackSubReasons">
@@ -40,12 +43,30 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ComebackReason_ID" Type="int" />
         </EntityType>
+        <EntityType Name="ProblemResponsibleCategories">
+          <Key>
+            <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+          </Key>
+          <Property Name="ProblemResponsibilityCategory_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemResponsibilityCategory_Description" Type="varchar" MaxLength="15" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="Settings">
           <Key>
             <PropertyRef Name="Setting_ID" />
           </Key>
           <Property Name="Setting_ID" Type="int" Nullable="false" />
           <Property Name="FilesPath" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -70,6 +91,18 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <Property Name="ComebackReason_ID" Type="int" />
           <Property Name="ReasonDescription" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ComebackReasons_ProblemResponsibleCategories">
+          <End Role="ProblemResponsibleCategories" Type="Self.ProblemResponsibleCategories" Multiplicity="0..1" />
+          <End Role="ComebackReasons" Type="Self.ComebackReasons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemResponsibleCategories">
+              <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+            </Principal>
+            <Dependent Role="ComebackReasons">
+              <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comebacks_0">
           <End Role="ComebackReasons" Type="Self.ComebackReasons" Multiplicity="0..1" />
           <End Role="Comebacks" Type="Self.Comebacks" Multiplicity="*" />
@@ -98,7 +131,9 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <EntitySet Name="ComebackReasons" EntityType="Self.ComebackReasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comebacks" EntityType="Self.Comebacks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ComebackSubReasons" EntityType="Self.ComebackSubReasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemResponsibleCategories" EntityType="Self.ProblemResponsibleCategories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="v_SubReasons" EntityType="Self.v_SubReasons" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -109,6 +144,10 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
     [v_SubReasons].[ReasonDescription] AS [ReasonDescription]
     FROM [dbo].[v_SubReasons] AS [v_SubReasons]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_ComebackReasons_ProblemResponsibleCategories" Association="Self.FK_ComebackReasons_ProblemResponsibleCategories">
+            <End Role="ProblemResponsibleCategories" EntitySet="ProblemResponsibleCategories" />
+            <End Role="ComebackReasons" EntitySet="ComebackReasons" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comebacks_0" Association="Self.FK_Comebacks_0">
             <End Role="ComebackReasons" EntitySet="ComebackReasons" />
             <End Role="Comebacks" EntitySet="Comebacks" />
@@ -126,9 +165,15 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <EntitySet Name="ComebackReasons" EntityType="ComebackModel.ComebackReason" />
           <EntitySet Name="Comebacks" EntityType="ComebackModel.Comeback" />
           <EntitySet Name="ComebackSubReasons" EntityType="ComebackModel.ComebackSubReason" />
+          <EntitySet Name="ProblemResponsibleCategories" EntityType="ComebackModel.ProblemResponsibleCategory" />
           <EntitySet Name="Settings" EntityType="ComebackModel.Setting" />
+          <EntitySet Name="sysdiagrams" EntityType="ComebackModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="ComebackModel.User" />
           <EntitySet Name="v_SubReasons" EntityType="ComebackModel.v_SubReasons" />
+          <AssociationSet Name="FK_ComebackReasons_ProblemResponsibleCategories" Association="ComebackModel.FK_ComebackReasons_ProblemResponsibleCategories">
+            <End Role="ProblemResponsibleCategory" EntitySet="ProblemResponsibleCategories" />
+            <End Role="ComebackReason" EntitySet="ComebackReasons" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comebacks_0" Association="ComebackModel.FK_Comebacks_0">
             <End Role="ComebackReason" EntitySet="ComebackReasons" />
             <End Role="Comeback" EntitySet="Comebacks" />
@@ -144,7 +189,9 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           </Key>
           <Property Name="ComebackReason_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProblemResponsibilityCategory_ID" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ProblemResponsibleCategory" Relationship="ComebackModel.FK_ComebackReasons_ProblemResponsibleCategories" FromRole="ComebackReason" ToRole="ProblemResponsibleCategory" />
           <NavigationProperty Name="Comebacks" Relationship="ComebackModel.FK_Comebacks_0" FromRole="ComebackReason" ToRole="Comeback" />
           <NavigationProperty Name="ComebackSubReasons" Relationship="ComebackModel.FK_ComebackSubReasons_0" FromRole="ComebackReason" ToRole="ComebackSubReason" />
         </EntityType>
@@ -163,7 +210,9 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <Property Name="HomePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="WorkPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Model" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CarYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="CloseDate" Type="DateTime" Precision="3" />
+          <Property Name="Complaint" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="ComebackStatus" Type="Int32" />
           <NavigationProperty Name="ComebackReason" Relationship="ComebackModel.FK_Comebacks_0" FromRole="Comeback" ToRole="ComebackReason" />
         </EntityType>
@@ -177,12 +226,31 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <Property Name="ComebackReason_ID" Type="Int32" />
           <NavigationProperty Name="ComebackReason" Relationship="ComebackModel.FK_ComebackSubReasons_0" FromRole="ComebackSubReason" ToRole="ComebackReason" />
         </EntityType>
+        <EntityType Name="ProblemResponsibleCategory">
+          <Key>
+            <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+          </Key>
+          <Property Name="ProblemResponsibilityCategory_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemResponsibilityCategory_Description" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ComebackReasons" Relationship="ComebackModel.FK_ComebackReasons_ProblemResponsibleCategories" FromRole="ProblemResponsibleCategory" ToRole="ComebackReason" />
+        </EntityType>
         <EntityType Name="Setting">
           <Key>
             <PropertyRef Name="Setting_ID" />
           </Key>
           <Property Name="Setting_ID" Type="Int32" Nullable="false" />
           <Property Name="FilesPath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -205,6 +273,18 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
           <Property Name="ComebackReason_ID" Type="Int32" />
           <Property Name="ReasonDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <Association Name="FK_ComebackReasons_ProblemResponsibleCategories">
+          <End Type="ComebackModel.ProblemResponsibleCategory" Role="ProblemResponsibleCategory" Multiplicity="0..1" />
+          <End Type="ComebackModel.ComebackReason" Role="ComebackReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemResponsibleCategory">
+              <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+            </Principal>
+            <Dependent Role="ComebackReason">
+              <PropertyRef Name="ProblemResponsibilityCategory_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comebacks_0">
           <End Type="ComebackModel.ComebackReason" Role="ComebackReason" Multiplicity="0..1" />
           <End Type="ComebackModel.Comeback" Role="Comeback" Multiplicity="*" />
@@ -239,6 +319,7 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
             <EntityTypeMapping TypeName="ComebackModel.ComebackReason">
               <MappingFragment StoreEntitySet="ComebackReasons">
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProblemResponsibilityCategory_ID" ColumnName="ProblemResponsibilityCategory_ID" />
                 <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="ComebackReason_ID" ColumnName="ComebackReason_ID" />
               </MappingFragment>
@@ -248,7 +329,9 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
             <EntityTypeMapping TypeName="ComebackModel.Comeback">
               <MappingFragment StoreEntitySet="Comebacks">
                 <ScalarProperty Name="ComebackStatus" ColumnName="ComebackStatus" />
+                <ScalarProperty Name="Complaint" ColumnName="Complaint" />
                 <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="CarYear" ColumnName="CarYear" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
                 <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
@@ -273,11 +356,31 @@ warning 6002: The table/view 'Comeback.dbo.v_SubReasons' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProblemResponsibleCategories">
+            <EntityTypeMapping TypeName="ComebackModel.ProblemResponsibleCategory">
+              <MappingFragment StoreEntitySet="ProblemResponsibleCategories">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProblemResponsibilityCategory_Description" ColumnName="ProblemResponsibilityCategory_Description" />
+                <ScalarProperty Name="ProblemResponsibilityCategory_ID" ColumnName="ProblemResponsibilityCategory_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Settings">
             <EntityTypeMapping TypeName="ComebackModel.Setting">
               <MappingFragment StoreEntitySet="Settings">
                 <ScalarProperty Name="FilesPath" ColumnName="FilesPath" />
                 <ScalarProperty Name="Setting_ID" ColumnName="Setting_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ComebackModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
