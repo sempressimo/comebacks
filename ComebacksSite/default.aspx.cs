@@ -47,7 +47,10 @@ namespace ComebacksSite
             }
             else
             {
-                throw new Exception("No filter specified.");
+                // Just use pending as default..
+                R = this.db.Comebacks.Where(p => p.ComebackStatus == null).OrderBy(p => p.OpenDate);
+
+                //throw new Exception("No filter specified.");
             }
 
             this.gvRecords.DataSource = R.ToList();
@@ -56,7 +59,6 @@ namespace ComebacksSite
             this.lblPending.Text = R.Count().ToString();
 
             var Todays = R.Where(p => p.OpenDate == DateTime.Today);
-            this.lblNew.Text = Todays.Count().ToString();
         }
 
         protected void gvRecords_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -85,6 +87,25 @@ namespace ComebacksSite
                 this.gvRecords.PageIndex = e.NewPageIndex;
 
                 //this.LoadRecords();
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void gvRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    if (e.Row.Cells[3].Text.Length > 7)
+                    {
+                        e.Row.Cells[3].Text = e.Row.Cells[3].Text.Substring(0, 7);
+                    }
+                }
             }
             catch (Exception E)
             {
