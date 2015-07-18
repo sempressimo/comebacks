@@ -57,6 +57,7 @@ namespace ComebacksSite
 
         protected void DemoRecords()
         {
+            Random r = new Random(DateTime.Now.Millisecond);
 
             for (int i = 0; i <= 10; i++)
             {
@@ -70,6 +71,10 @@ namespace ComebacksSite
                 C.OpenDate = DateTime.Today;
                 C.VIN = "1234567890";
                 C.WorkPhone = "787-888-1209";
+
+                int rn = r.Next(9);
+
+                C.CarYear = "201" + rn.ToString();
 
                 this.db.Comebacks.Add(C);
                 this.db.SaveChanges();
