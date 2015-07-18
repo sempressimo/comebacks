@@ -45,6 +45,7 @@
 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                             </asp:ButtonField>
                             <asp:BoundField DataField="ReasonDescription" HeaderText="Reason Description" />
+                            <asp:BoundField DataField="ProblemResponsibleCategory.ProblemResponsibilityCategory_Description" HeaderText="Responsible Category" />
                             <asp:BoundField DataField="IsActive" HeaderText="Active" />
                         </Columns>
                         </asp:GridView>
