@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="01b22482c09f41a48077ed023c185186" Name="Diagram1">
-        <EntityTypeShape EntityType="ComebackModel.ComebackReason" Width="1.5" PointX="3" PointY="3.375" />
-        <EntityTypeShape EntityType="ComebackModel.Comeback" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="ComebackModel.ComebackSubReason" Width="1.5" PointX="5.25" PointY="6" />
-        <EntityTypeShape EntityType="ComebackModel.ProblemResponsibleCategory" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="ComebackModel.ComebackReason" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="ComebackModel.Comeback" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="ComebackModel.ComebackSubReason" Width="1.5" PointX="5.25" PointY="6.625" />
+        <EntityTypeShape EntityType="ComebackModel.ProblemResponsibleCategory" Width="1.5" PointX="0.75" PointY="4" />
         <EntityTypeShape EntityType="ComebackModel.Setting" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ComebackModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="ComebackModel.User" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ComebackModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ComebackModel.User" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="ComebackModel.v_SubReasons" Width="1.5" PointX="7.75" PointY="3.75" />
         <AssociationConnector Association="ComebackModel.FK_ComebackReasons_ProblemResponsibleCategories" />
         <AssociationConnector Association="ComebackModel.FK_Comebacks_0" />

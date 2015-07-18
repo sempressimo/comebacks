@@ -17,6 +17,7 @@ namespace ComebacksSite
         public int Comeback_ID { get; set; }
         public bool Is_Comeback { get; set; }
         public string RO_Number { get; set; }
+        public string New_RO_Number { get; set; }
         public string VIN { get; set; }
         public Nullable<System.DateTime> OpenDate { get; set; }
         public Nullable<int> ComebackReason_ID { get; set; }
@@ -29,6 +30,8 @@ namespace ComebacksSite
         public Nullable<System.DateTime> CloseDate { get; set; }
         public string Complaint { get; set; }
         public Nullable<int> ComebackStatus { get; set; }
+        public string Technitian_Name { get; set; }
+        public string Advisor_Name { get; set; }
     
         public virtual ComebackReason ComebackReason { get; set; }
     }
