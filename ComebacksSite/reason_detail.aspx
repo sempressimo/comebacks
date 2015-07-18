@@ -13,8 +13,12 @@
             <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
 
             <div class="form-group">
-            <label>Reason Description</label>
-            <input runat="server" type="text" class="form-control" id="txtReasonDescription" placeholder="Reason description...">
+                <label>Reason Description</label>
+                <input runat="server" type="text" class="form-control" id="txtReasonDescription" placeholder="Reason description...">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Responsible Category</label>
+                <asp:DropDownList runat="server" CssClass="form-control" ID="cmbResponsible" />
             </div>
             <div class="checkbox">
             <label>

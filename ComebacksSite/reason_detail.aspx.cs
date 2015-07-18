@@ -19,6 +19,8 @@ namespace ComebacksSite
                 {
                     ViewState["id"] = Request.QueryString["id"];
 
+                    this.LoadResponsibleCategories();
+
                     if (ViewState["id"] != null)
                     {
                         this.LoadRecord();
@@ -32,11 +34,27 @@ namespace ComebacksSite
             }
         }
 
+        protected void LoadResponsibleCategories()
+        {
+            var C = this.db.ProblemResponsibleCategories.OrderBy(p => p.ProblemResponsibilityCategory_Description);
+
+            this.cmbResponsible.DataSource = C.ToList();
+            this.cmbResponsible.DataValueField = "ProblemResponsibilityCategory_ID";
+            this.cmbResponsible.DataTextField = "ProblemResponsibilityCategory_Description";
+            this.cmbResponsible.DataBind();
+        }
+
         protected void LoadRecord()
         {
             int id = Convert.ToInt32(ViewState["id"]);
 
             var R = this.db.ComebackReasons.Single(p => p.ComebackReason_ID == id);
+
+            if (this.cmbResponsible.Items.FindByValue(R.ProblemResponsibilityCategory_ID.ToString()) != null)
+            {
+                this.cmbResponsible.Items.FindByValue(R.ProblemResponsibilityCategory_ID.ToString()).Selected = true;
+            }
+
             this.cbIsActive.Checked = R.IsActive;
 
             this.txtReasonDescription.Value = R.ReasonDescription;
@@ -50,6 +68,7 @@ namespace ComebacksSite
                 {
                     ComebackReason R = new ComebackReason();
 
+                    R.ProblemResponsibilityCategory_ID = Convert.ToInt32(this.cmbResponsible.SelectedValue);
                     R.ReasonDescription = this.txtReasonDescription.Value;
                     R.IsActive = this.cbIsActive.Checked;
 
@@ -62,6 +81,7 @@ namespace ComebacksSite
 
                     var R = this.db.ComebackReasons.Single(p => p.ComebackReason_ID == id);
 
+                    R.ProblemResponsibilityCategory_ID = Convert.ToInt32(this.cmbResponsible.SelectedValue);
                     R.ReasonDescription = this.txtReasonDescription.Value;
                     R.IsActive = this.cbIsActive.Checked;
 
