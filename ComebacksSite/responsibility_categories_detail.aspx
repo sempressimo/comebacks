@@ -14,7 +14,7 @@
 
             <div class="form-group">
                 <label>Category Description</label>
-                <input runat="server" type="text" class="form-control" id="txtDescription" placeholder="Category description...">
+                <input runat="server" type="text" class="form-control" maxlength="15" id="txtDescription" placeholder="Category description...">
             </div>
             <div class="checkbox">
             <label>
