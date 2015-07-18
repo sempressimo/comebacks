@@ -2,51 +2,51 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="StyleSection" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
-    <div>
+    
+    <div style="background-color: white !important" class="jumbotron">
 
-    <form runat="server">
+    <h2>Login Account Detail</h2>
 
-        <div style="background-color: white !important" class="jumbotron">
-
-            <h2>Login Account Details</h2>
-
-            <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
-            <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
-
-            <div class="input-group">
-                <span class="input-group-addon">Username</span>
-                <input runat="server" id="txtUsername" type="text" class="form-control"
-                    placeholder="Name for login.." />
-            </div>
+    <form role="form" runat="server">
         
-            <br />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator" Visible="false"></asp:CustomValidator>
 
-            <div class="input-group">
-                <span class="input-group-addon">Password</span>
-                <input runat="server" id="txtPassword" type="text" class="form-control"
-                    placeholder="Secret password.." />
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input id="txtUsername" runat="server" type="text" class="form-control" placeholder="Login name...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Role</label>
+            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbRole" >
+                <asp:ListItem Value="A">Admin</asp:ListItem>
+                <asp:ListItem Value="P">Parts</asp:ListItem>
+                <asp:ListItem Value="U">User</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Password</label>
+            <input id="txtPassword" runat="server" type="password" class="form-control" placeholder="Secure password...">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Confirm Password</label>
+            <input id="txtPassword2" runat="server" type="password" class="form-control" placeholder="Re-type password...">
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input id="cbIsActive" type="checkbox" runat="server" checked="checked">
+                    <span class="text">Active</span>
+                </label>
             </div>
-        
-            <br />
-
-            <div class="input-group">
-               <span class="input-group-addon">
-                  <input type="checkbox" runat="server"/>
-               </span>
-               <input id="cbIsActive" type="text" class="form-control" disabled="disabled" placeholder="Is Active"/>
-            </div>
-        
-            <br />
-
-            <div class="btn-group pull-right">
-                <asp:LinkButton ID="lbSubmit" OnClick="lbSubmit_Click" CssClass="btn btn-primary btn-lg" runat="server">Submit</asp:LinkButton>
-                <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CssClass="btn btn-default btn-lg" runat="server">Cancel</asp:LinkButton>
-            </div>
-
-            <br/>
-
+        </div>
+        <div class="btn-group pull-right">
+            <asp:LinkButton ID="lbSubmit" OnClick="lbSubmit_Click" CssClass="btn btn-primary btn-lg" runat="server">Submit</asp:LinkButton>
+            <asp:LinkButton ID="lbCancel" OnClick="lbCancel_Click" CssClass="btn btn-default btn-lg" runat="server">Cancel</asp:LinkButton>
         </div>
 
+        <br/>
+         
     </form>
 
 </div>
