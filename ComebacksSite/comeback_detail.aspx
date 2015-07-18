@@ -47,7 +47,7 @@
                                         <input id="txtOpenDate" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label>Closed Date</labe>
+                                        <label>Closed Date</label>
                                         <input id="txtClosedDate" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                     </div>
@@ -59,16 +59,31 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <label  >Set Status</label>
-                                        <asp:DropDownList runat="server" CssClass="form-control" ID="cmbStatus" >
+                                        <label>Set Status</label>
+                                        <asp:DropDownList runat="server" CssClass="form-control" ID="cmbStatus" AutoPostBack="True" OnSelectedIndexChanged="cmbStatus_SelectedIndexChanged" >
+                                            <asp:ListItem Value="-1">- Please Select -</asp:ListItem>
                                             <asp:ListItem Value="1">Is Comeback</asp:ListItem>
                                             <asp:ListItem Value="2">Not Comeback</asp:ListItem>
                                             <asp:ListItem Value="3">Needs Parts Specialist Input</asp:ListItem>
-                                            </asp:DropDownList>
+                                            </asp:DropDownList><asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="cmbStatus" InitialValue="-1" runat="server" Text="*" ForeColor="OrangeRed" ErrorMessage="Status is required."></asp:RequiredFieldValidator>
                                         </div>
 
+                                        <div class="form-group" id="div_reason" runat="server" visible="false">
+                                        <label>Comeback Reason (Root cause)</label>
+                                            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbReason" AutoPostBack="True" OnSelectedIndexChanged="cmbReason_SelectedIndexChanged" >
+                                            </asp:DropDownList><asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="cmbReason" InitialValue="-1" runat="server" Text="*" ForeColor="OrangeRed" ErrorMessage="Reason is required."></asp:RequiredFieldValidator>
+                                        </div>
+
+                                        <div class="form-group" id="div_sub_reason" runat="server" visible="false">
+                                            <label>Comeback Sub-Reason (More Detail)</label>
+                                            <asp:DropDownList runat="server" CssClass="form-control" ID="cmbSubReason" >
+                                            </asp:DropDownList><asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="cmbSubReason" InitialValue="-1" runat="server" Text="*" ForeColor="OrangeRed" ErrorMessage="Sub-Reason is required."></asp:RequiredFieldValidator>
+                                        </div>
+
+                                        <hr/>
+
                                         <div class="form-group">
-                                        <label  >Parts Specialist Notes</label>
+                                        <label>Parts Specialist Notes</label>
                                         <textarea rows="3" placeholder="Comeback explanation..." class="form-control" required="required"></textarea>
                                         </div>
 

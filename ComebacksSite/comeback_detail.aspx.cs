@@ -17,7 +17,7 @@ namespace ComebacksSite
             {
                 if (!Page.IsPostBack)
                 {
-                    //this.LoadLists();
+                    this.LoadLists();
 
                     ViewState["id"] = Request.QueryString["id"];
 
@@ -32,6 +32,27 @@ namespace ComebacksSite
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
             }
+        }
+
+        protected void LoadLists()
+        {
+            var R = this.db.ComebackReasons.OrderBy(p => p.ReasonDescription);
+
+            this.cmbReason.DataSource = R.ToList();
+            this.cmbReason.DataValueField = "ComebackReason_ID";
+            this.cmbReason.DataTextField = "ReasonDescription";
+            this.cmbReason.DataBind();
+
+            this.cmbReason.Items.Insert(0, new ListItem("- Please Select -", "-1"));
+
+            var SR = this.db.ComebackSubReasons.OrderBy(p => p.SubReasonDescription);
+
+            this.cmbSubReason.DataSource = SR.ToList();
+            this.cmbSubReason.DataValueField = "Comeback_SubReason_ID";
+            this.cmbSubReason.DataTextField = "SubReasonDescription";
+            this.cmbSubReason.DataBind();
+
+            this.cmbSubReason.Items.Insert(0, new ListItem("- Please Select -", "-1"));
         }
 
         protected void LoadRecord()
@@ -76,6 +97,39 @@ namespace ComebacksSite
                 this.db.SaveChanges();
 
                 Response.Redirect("default.aspx");
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.cmbStatus.SelectedIndex == 1)
+                {
+                    this.div_reason.Visible = true;
+                }
+                else
+                {
+                    this.div_reason.Visible = this.div_sub_reason.Visible = false;
+                }
+            }
+            catch (Exception E)
+            {
+                this.CustomValidator1.IsValid = false;
+                this.CustomValidator1.ErrorMessage = E.Message;
+            }
+        }
+
+        protected void cmbReason_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.div_sub_reason.Visible = this.div_reason.Visible;
             }
             catch (Exception E)
             {
