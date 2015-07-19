@@ -33,32 +33,24 @@ namespace ComebacksSite
         {
             IQueryable<Comeback> R = null;
 
-            if (Filter == "pending")
-            {
-                R = this.db.Comebacks.Where(p => p.ComebackStatus == null).OrderBy(p => p.OpenDate);
-            }
-            else if (Filter == "new")
-            {
-                R = this.db.Comebacks.Where(p => p.ComebackStatus == null && p.OpenDate == DateTime.Today).OrderBy(p => p.OpenDate);
-            }
-            else if (Filter == "parts")
+            R = this.db.Comebacks.Where(p => p.ComebackStatus == null || p.ComebackStatus == 3).OrderBy(p => p.OpenDate);
+
+            this.lblPending.Text = R.Where(p => p.ComebackStatus == null).Count().ToString();
+
+            this.lblParts.Text = R.Where(p => p.ComebackStatus == 3).Count().ToString();
+
+            if (Filter == "parts")
             {
                 R = this.db.Comebacks.Where(p => p.ComebackStatus == 3).OrderBy(p => p.OpenDate);
+
+                this.gvRecords.DataSource = R.ToList();
             }
             else
             {
-                // Just use pending as default..
-                R = this.db.Comebacks.Where(p => p.ComebackStatus == null).OrderBy(p => p.OpenDate);
-
-                //throw new Exception("No filter specified.");
+                this.gvRecords.DataSource = R.ToList();
             }
 
-            this.gvRecords.DataSource = R.ToList();
             this.gvRecords.DataBind();
-
-            this.lblPending.Text = R.Count().ToString();
-
-            var Todays = R.Where(p => p.OpenDate == DateTime.Today);
         }
 
         protected void gvRecords_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -83,7 +75,6 @@ namespace ComebacksSite
         {
             try
             {
-
                 this.gvRecords.PageIndex = e.NewPageIndex;
 
                 //this.LoadRecords();

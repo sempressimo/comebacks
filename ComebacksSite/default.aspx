@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="ComebacksSite._default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="default.aspx.cs" Inherits="ComebacksSite._default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="StyleSection" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentSection" runat="server">
@@ -19,8 +19,7 @@
                     <a href="default.aspx?mode=parts">Parts Input <span class="badge ">
                         <asp:Label ID="lblParts" runat="server" Text="0"></asp:Label></span></a>
 
-                    <a href="default.aspx?mode=parts" class="pull-right">Closed <span class="badge ">
-                        <asp:Label ID="Label1" runat="server" Text="0"></asp:Label></span></a>
+                    <a href="default.aspx?mode=parts" class="pull-right">View Closed</a>
                     <br/><br/>
 
                     <div class="table-responsive">
