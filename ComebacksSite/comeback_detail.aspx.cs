@@ -24,6 +24,8 @@ namespace ComebacksSite
                     if (ViewState["id"] != null)
                     {
                         this.LoadRecord();
+
+                        this.LoadPreviousVisits();
                     }
                 }
             }
@@ -32,6 +34,16 @@ namespace ComebacksSite
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
             }
+        }
+
+        protected void LoadPreviousVisits()
+        {
+            IQueryable<Comeback> R = null;
+
+            R = this.db.Comebacks.Where(p => p.VIN == this.txtSerial.Value).OrderBy(p => p.OpenDate);
+
+            this.gvRelatedRecords.DataSource = R.ToList();
+            this.gvRelatedRecords.DataBind();
         }
 
         protected void LoadLists()
@@ -64,16 +76,25 @@ namespace ComebacksSite
             if (C.CloseDate != null) this.txtClosedDate.Value = C.CloseDate.Value.ToShortDateString();
             this.txtCustomerName.Value = C.CustomerName;
             this.txtMainPhone.Value = C.HomePhone;
-            this.txtModel.Value = C.Model;
+            this.txtModel.Value = C.CarYear.ToString() + " / " + C.Model;
             this.txtNotes.Value = C.Notes;
             this.txtOpenDate.Value = C.OpenDate.Value.ToShortDateString();
             this.txtRONumber.Value = C.RO_Number;
+            this.txtNewRONumber.Value = C.New_RO_Number;
             this.txtSerial.Value = C.VIN;
             this.txtWorkPhone.Value = C.WorkPhone;
+            this.txtTechnician.Value = C.Technitian_Name;
+            this.txtAdvisor.Value = C.Advisor_Name;
 
             if (this.cmbStatus.Items.FindByValue(C.ComebackStatus.ToString()) != null)
             {
                 this.cmbStatus.Items.FindByValue(C.ComebackStatus.ToString()).Selected = true;
+            }
+
+            if (this.cmbStatus.SelectedValue == "3")
+            {
+                // Show parts note field
+                this.div_parts_note.Visible = true;
             }
         }
 
@@ -113,6 +134,11 @@ namespace ComebacksSite
                 {
                     this.div_reason.Visible = true;
                 }
+                else if (this.cmbStatus.SelectedIndex == 3)
+                {
+                    this.div_parts_note.Visible = true;
+                    this.div_reason.Visible = this.div_sub_reason.Visible = false;
+                }
                 else
                 {
                     this.div_reason.Visible = this.div_sub_reason.Visible = false;
@@ -136,6 +162,21 @@ namespace ComebacksSite
                 this.CustomValidator1.IsValid = false;
                 this.CustomValidator1.ErrorMessage = E.Message;
             }
+        }
+
+        protected void gvRecords_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void gvRecords_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvRecords_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
         }
     }
 }

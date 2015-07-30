@@ -12,6 +12,26 @@
 
         <h2>Dashboard</h2>
 
+        <div class="panel">
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <input id="txtFrom" runat="server" type="text" class="form-control input-lg" placeholder="Fecha desde..." />
+                        </div>
+                        <div class="col-lg-3">
+                            <input id="txtTo" runat="server" type="text" class="form-control input-lg" placeholder="Fecha hasta..." />
+                        </div>
+                        <div class="col-lg-6">
+                            <button id="cmdSearch" onserverclick="cmdSearch_ServerClick" runat="server" class="btn btn-info btn-lg" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <form runat="server">
 
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-warning" />
@@ -20,14 +40,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
-                        <asp:label id="ltChart" runat="server"></asp:label>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <asp:label id="ltPieChartByTech" runat="server"></asp:label>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-6">
-                        <asp:label id="ltPieChart" runat="server"></asp:label>
+                        <asp:label id="ltPieChartModel" runat="server"></asp:label>
                     </div>
                 </div>
                 <div class="row">
-                
+                    <asp:label id="ltChart" runat="server"></asp:label>
                 </div>
             </div>
 

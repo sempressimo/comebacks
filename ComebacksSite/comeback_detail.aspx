@@ -35,16 +35,28 @@
                                         <input id="txtRONumber" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label>Serial</label>
+                                        <label for="exampleInputEmail1">New RO Number</label>
+                                        <input id="txtNewRONumber" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label>VIN</label>
                                         <input id="txtSerial" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                        <label>Car Model</label>
+                                        <label>Car Model / Year</label>
                                         <input id="txtModel" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
                                         <label>Open Date</label>
                                         <input id="txtOpenDate" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Technitian</label>
+                                        <input id="txtTechnician" runat="server" type="text" disabled="disabled" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Advisor</label>
+                                        <input id="txtAdvisor" runat="server" type="text" disabled="disabled" class="form-control">
                                         </div>
                                         <div class="form-group">
                                         <label>Closed Date</label>
@@ -82,14 +94,14 @@
 
                                         <hr/>
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="div_parts_note" runat="server" visible="false">
                                         <label>Parts Specialist Notes</label>
-                                        <textarea rows="3" placeholder="Comeback explanation..." class="form-control" required="required"></textarea>
+                                        <textarea rows="3" style="background-color: lightyellow;" placeholder="Note from part specialist..." class="form-control" required="required"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <asp:LinkButton ID="lbSave" runat="server" CssClass="btn btn-success" OnClick="lbSave_Click">Save</asp:LinkButton>
-                                            <asp:LinkButton ID="lbCancel" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click">Cancel</asp:LinkButton>
+                                            <asp:LinkButton ID="lbCancel" CausesValidation="false" runat="server" CssClass="btn btn-default" OnClick="LinkButton1_Click">Cancel</asp:LinkButton>
                                         </div>
 
 
@@ -97,9 +109,10 @@
                                 </div>
                             </div>
                         </div>
-                </div>
+                    
+                    </div>
                 
-                <div class="col-lg-4">
+                    <div class="col-lg-4">
                         
                         <div class="list-group">
                             <a href="#" class="list-group-item active">
@@ -120,19 +133,40 @@
                             <input id="txtWorkPhone" runat="server" type="text" class="form-control"  disabled="disabled">
                             </div>
                             </div>
-                        </div>
+                    </div>
             
+                </div>
+                
+                <div class="row">
+                    
+                    <a href="#" class="list-group-item active">
+                        Previous Visits
+                    </a>
+
+                    <br/>
+
+                    <div class="table-responsive">
+                        <asp:GridView ID="gvRelatedRecords" DataKeyNames="Comeback_ID" PagerStyle-HorizontalAlign="Center" PagerStyle-CssClass="bs-pagination" Width="100%" runat="server" CssClass="table table-striped table-bordered table-condensed" EmptyDataText="There are no related visits." OnRowCommand="gvRecords_RowCommand" AutoGenerateColumns="False" AllowPaging="True" PageSize="15" OnPageIndexChanging="gvRecords_PageIndexChanging" OnRowDataBound="gvRecords_RowDataBound">
+                        <Columns>
+                        <asp:ButtonField Text="Open" CommandName="Open" ControlStyle-CssClass="btn btn-info" >
+                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                            </asp:ButtonField>
+                            <asp:BoundField DataField="RO_Number" HeaderText="Original RO" />
+                            <asp:BoundField DataField="New_RO_Number" HeaderText="New RO" />
+                            <asp:BoundField DataField="Technitian_Name" HeaderText="Tech" />
+                            <asp:BoundField DataField="Advisor_Name" HeaderText="Ser. Adv" />
+
+                        </Columns>
+                        </asp:GridView>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
-
     </form>
 
 </div> <!-- jumbotron -->
-
-    </label>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptSection" runat="server">

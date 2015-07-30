@@ -49,6 +49,15 @@ namespace ComebacksSite {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtRONumber;
         
         /// <summary>
+        /// txtNewRONumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNewRONumber;
+        
+        /// <summary>
         /// txtSerial control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,24 @@ namespace ComebacksSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtOpenDate;
+        
+        /// <summary>
+        /// txtTechnician control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTechnician;
+        
+        /// <summary>
+        /// txtAdvisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtAdvisor;
         
         /// <summary>
         /// txtClosedDate control.
@@ -166,6 +193,15 @@ namespace ComebacksSite {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
+        /// div_parts_note control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_parts_note;
+        
+        /// <summary>
         /// lbSave control.
         /// </summary>
         /// <remarks>
@@ -209,5 +245,14 @@ namespace ComebacksSite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtWorkPhone;
+        
+        /// <summary>
+        /// gvRelatedRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvRelatedRecords;
     }
 }
